@@ -8,5 +8,17 @@ When /^I login$/ do
   $b.button(:id,'signinButton').click
 end
 Then /^I should be logged in successfully$/ do
+  sleep 4
   $b.link(:id,'login-sign-out').exists?
   end
+Given /^I am at mysky page$/ do
+  step %{I am on sky.com home page}
+  step %{I login}
+  $b.goto 'http://www.sky.com/mysky'
+
+end
+Given /^I am at shop page$/ do
+  step %(I am on sky.com home page)
+  step %(I login)
+  $b.goto 'http://www.sky.com/shop'
+end
